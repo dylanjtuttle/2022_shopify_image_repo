@@ -4,31 +4,13 @@ This image repository is designed for the tagging of images, as well as an effic
 
 ## Installation and Execution
 
-First, clone the repository onto your machine:
-
 ```bash
 git clone https://github.com/dylanjtuttle/2022_shopify_image_repo
 cd 2022_shopify_image_repo
-```
-
-Next, to execute the program:
-
-**On Unix machines:**
-
-```bash
 javac src/Code/*.java -d ./out
-java java Code.Image_Repo
+cd out
+java Code.Image_Repo
 ```
-
-**On Windows machines:**
-
-```bash
-javac src/Code/*.java
-cd src
-java Code/Image_Repo
-```
-
-INSTALLATION INSTRUCTIONS NOT FINISHED
 
 ## Data Structure Overview
 
