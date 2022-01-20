@@ -4,6 +4,8 @@ This image repository is designed for the tagging of images, as well as an effic
 
 ## Installation and Execution
 
+Open up a terminal window and ensure you are in your home directory. Execute the following commands:
+
 ```bash
 git clone https://github.com/dylanjtuttle/2022_shopify_image_repo
 cd 2022_shopify_image_repo
@@ -31,6 +33,10 @@ The most relevant improvements that can be made to this repository are additiona
 Of course, the lack of persistence is a concern, as the images are stored on the user's memory during the running of the program, and then are simply deleted as soon as the program is exited. However, since the focus of this project is on the data structures, storage, and efficiency of the operations, persistence is beyond the scope of this project. Furthermore, the loosely-coupled nature of this project allows for anyone to easily swap out the front end (which provides the image, month/year of creation, and tags), and the actual storage of the HashMaps, while this program runs in the middle, connecting the two.
 
 One may notice my use of SimpleDateFormat to store the month and year of image creation, instead of a String like the rest of the tags. This construct allows for the comparing of two dates, and could therefore allow for a user to search for images created over a period of multiple months.
+
+The very open-ended nature of the tags may prove confusing for some users, so it would be simple to, in a future implementation, add an option for "adding images to albums" even if they use the same tagging mechanism on the back end.
+
+Finally, the ability of the program to host the photos of multiple users and store an arbitrary set of tags could lend itself quite easily to a sharing feature, whereby users can tag images with the usernames of other users in the repository, giving them access to certain images.
 
 ## License
 MIT License
