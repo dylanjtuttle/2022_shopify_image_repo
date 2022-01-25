@@ -14,6 +14,34 @@ cd out
 java Code.Image_Repo
 ```
 
+To compile and execute the unit tests, open a terminal window and navigate to your `2022_shopify_image_repo` folder.
+
+Before you can run the tests, you need to ensure you have downloaded the JUnit 4 and Hamcrest JAR files and added them to your Java CLASSPATH environment variable. If you have not done this already, you can download them [here](https://search.maven.org/search?q=g:junit%20AND%20a:junit) and [here](https://search.maven.org/artifact/org.hamcrest/hamcrest).
+
+Next, add these files to your CLASSPATH. 
+
+### Linux/Mac OS:
+
+```bash
+export CLASSPATH="$CLASSPATH:[path-to-junit-4.XX.X.jar]:[path-to-hamcrest-X.X.jar]:[path-to-2022_shopify_image_repo/out]"
+```
+
+### Windows:
+
+```bash
+set CLASSPATH=%CLASSPATH%;[path-to-junit-4.XX.X.jar];[path-to-hamcrest-X.X.jar];[path-to-2022_shopify_image_repo/out]
+```
+
+Note that these changes to your CLASSPATH exist only during the current terminal session and will be removed when you close your terminal window.
+
+Now execute the following commands:
+
+```bash
+javac src/Tests/*.java -d ./out
+cd out
+java org.junit.runner.JUnitCore Tests.Test_Image Tests.Test_Image_Repo
+```
+
 ## Data Structure Overview
 
 This repository consists of a hierarchy of Java HashMaps. Although the current implementation does not allow for persistence, the main HashMap contains a key for each user in order to keep each user's images seperate, although there is no password required to access each user's repository (as security is not the main focus of this project). Furthermore, each user's repository is itself a HashMap containing keys for each "tag" that has been added to an image in the repository, containing an ArrayList of images which that tag has been assigned to. These tags are arbitrary strings which the user can choose to interpret as photo albums, descriptions of the contents of an image, or any other organizational system the user can think of.
