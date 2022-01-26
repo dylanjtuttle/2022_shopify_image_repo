@@ -13,13 +13,25 @@ public class Image_Repo {
 
         // Create the outer HashMap to store each user's personal HashMap and populate it with a dummy HashMap with key "root"
         HashMap<String, HashMap<String, ArrayList<Image>>> users = new HashMap<>();
-        users.put("root", new HashMap<>());
+        HashMap<String, ArrayList<Image>> root = new HashMap<>();
+        users.put("root", root);
+
+        System.out.println("Test performance at high scale? (will generate and store approximately 51,000,000 " +
+                "dummy image objects, taking up about 1.6 GB of memory) [y/n]:");
+        String performance = in.nextLine();
+
+        if (performance.equalsIgnoreCase("y")) {
+            System.out.println("\nGenerating images...");
+            // Fill the root HashMap with 1,000,000 images and 100 tags
+            generate_test_images(root);
+            System.out.println("Done! To test the performance at high scale, log in using the \"root\" username.");
+        }
 
         // Initialize a place to hold the current user's HashMap
         HashMap<String, ArrayList<Image>> user_images;
 
         // Get the current user's HashMap, either by...
-        System.out.println("Enter your username:");
+        System.out.println("\nEnter your username:");
         String potential_username = in.nextLine();
 
         // Retrieving the existing HashMap if the username already exists, or...
@@ -150,6 +162,49 @@ public class Image_Repo {
             }
         }
         return user_images;
+    }
+
+    public static void generate_test_images (HashMap<String, ArrayList<Image>> user_images) {
+        List<String> tag_list = Arrays.asList("dress", "pizzas", "rabbit", "week", "paper", "song", "ladybug", "pies",
+                "suit", "lunchroom", "ring", "truck", "bottle", "crime", "sidewalk",
+                "science", "fly", "cup", "cow", "poison", "balance", "feeling",
+                "stocking", "seed", "spade", "frogs", "cabbage", "use", "turkey",
+                "language", "ducks", "bubble", "servant", "beginner", "sheep", "straw",
+                "quince", "market", "lake", "cactus", "slope", "boot", "smoke", "throne",
+                "pest", "aunt", "sugar", "arm", "zephyr", "scent", "substance", "sound",
+                "vest", "fruit", "hand", "underwear", "trousers", "glove", "air", "cake",
+                "show", "society", "bag", "toy", "linen", "nut", "robin", "woman", "sofa",
+                "credit", "increase", "squirrel", "volleyball", "pipe", "memory",
+                "motion", "activity", "club", "parcel", "pocket", "home", "grandmother",
+                "hammer", "copper", "laugh", "flame", "head", "tray", "back", "committee",
+                "friend", "boundary", "insurance", "tank", "key", "cemetery", "voice",
+                "invention", "death", "thing");
+
+        for (int i = 0; i < 1000000; i++) {
+            // Generate a unique filename for each image
+            String filename = "file_" + i + ".jpg";
+
+            // give them all the same month of creation for simplicity
+            try {
+                Date month = string_to_date("01-2022");
+
+                // randomly select 50 tags to add to each image
+                Random select = new Random();
+                ArrayList<String> tags_selected = new ArrayList<>();
+                for (int j = 0; j < 10; j++) {
+                    int index = select.nextInt(tag_list.size());
+                    tags_selected.add(tag_list.get(index));
+                }
+
+                // Create the image
+                Image new_image = new Image(filename, month, tags_selected);
+
+                // add the image to the HashMap
+                image_add(user_images, new_image);
+            } catch (Exception ParseException) {
+                System.out.println("Invalid input, please enter month in the numerical format MM-YYYY (e.g. 01-2022):");
+            }
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------------------
