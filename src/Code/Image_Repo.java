@@ -167,6 +167,7 @@ public class Image_Repo {
             String tag = in.nextLine();
             if (tag.equalsIgnoreCase("")) {
                 done_adding_tags = true;
+                System.out.println("Searching...");
             } else if (tag.equalsIgnoreCase("e")) {
                 // Display all existing tags in the user's repository (that is, all keys in the user's HashMap)
                 System.out.println("Existing tags in your repository:");
@@ -193,6 +194,8 @@ public class Image_Repo {
                 System.out.printf("Tag \"%s\" does not exist in your repository.\n", tag);
             }
         }
+
+        System.out.println("Initial matches found...");
 
         // We now have an array of arrays which match the tags given by the user.
         // If the user only searched for one tag, we can simply return the single array inside initial_matches
