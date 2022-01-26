@@ -1,10 +1,7 @@
 package Code;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.HashMap;
+import java.util.*;
 
 public class Image_Repo {
 
