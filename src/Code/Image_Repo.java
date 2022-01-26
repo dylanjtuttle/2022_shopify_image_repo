@@ -60,7 +60,7 @@ public class Image_Repo {
                 }
             } else if (like_to_do.equalsIgnoreCase("q")) {
                 // Exit the program
-                System.out.println("Thank you for using Dylan Tuttle's Very Cool Image Repository! See you soon!");
+                System.out.println("\nThank you for using Dylan Tuttle's Very Cool Image Repository! See you soon!\n");
                 quit = true;
             } else {
                 System.out.println("Invalid input, please enter one of \"A\", \"S\", or \"Q\".");
