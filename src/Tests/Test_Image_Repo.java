@@ -96,6 +96,31 @@ public class Test_Image_Repo {
     }
 
     @Test
+    public void Test_image_search_no_match_not_all_tags() {
+        String test_tag_1 = "test tag 1";
+        String test_tag_2 = "test tag 2";
+        HashMap<String, ArrayList<Image>> user_images = new HashMap<>();
+        Image test_image_1 = new Image("filename_1");
+        Image test_image_2 = new Image("filename_2");
+        ArrayList<Image> test_array_1 = new ArrayList<>();
+        ArrayList<Image> test_array_2 = new ArrayList<>();
+        test_array_1.add(test_image_1);
+        test_array_2.add(test_image_2);
+        user_images.put(test_tag_1, test_array_1);
+        user_images.put(test_tag_2, test_array_2);
+
+        ArrayList<String> search_tags = new ArrayList<>();
+        search_tags.add(test_tag_1);
+        search_tags.add(test_tag_2);
+
+        ArrayList<Image> compare_array = new ArrayList<>();
+        compare_array.add(test_image_1);
+        compare_array.remove(0);
+
+        assertArrayEquals(Image_Repo.image_search(user_images, search_tags).toArray(), compare_array.toArray());
+    }
+
+    @Test
     public void Test_image_search_match() {
         String test_tag = "test tag";
         HashMap<String, ArrayList<Image>> user_images = new HashMap<>();
@@ -125,6 +150,26 @@ public class Test_Image_Repo {
         test_array_2.add(test_image);
         user_images.put(test_tag_1, test_array_1);
         user_images.put(test_tag_2, test_array_2);
+
+        ArrayList<String> search_tags = new ArrayList<>();
+        search_tags.add(test_tag_1);
+        search_tags.add(test_tag_2);
+
+        ArrayList<Image> compare_array = new ArrayList<>();
+        compare_array.add(test_image);
+
+        assertArrayEquals(Image_Repo.image_search(user_images, search_tags).toArray(), compare_array.toArray());
+    }
+
+    @Test
+    public void Test_image_search_match_two_tags_one_fail() {
+        String test_tag_1 = "test tag success";
+        String test_tag_2 = "test tag failure";
+        HashMap<String, ArrayList<Image>> user_images = new HashMap<>();
+        Image test_image = new Image("filename");
+        ArrayList<Image> test_array_1 = new ArrayList<>();
+        test_array_1.add(test_image);
+        user_images.put(test_tag_1, test_array_1);
 
         ArrayList<String> search_tags = new ArrayList<>();
         search_tags.add(test_tag_1);
