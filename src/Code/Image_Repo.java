@@ -173,12 +173,12 @@ public class Image_Repo {
                 "quince", "market", "lake", "cactus", "slope", "boot", "smoke", "throne",
                 "pest", "aunt", "sugar", "arm", "zephyr", "scent", "substance", "sound",
                 "vest", "fruit", "hand", "underwear", "trousers", "glove", "air", "cake",
-                "show", "society", "bag", "toy", "linen", "nut", "robin", "woman", "sofa",
+                "show", "society", "bag", "toy", "linen", "square", "robin", "woman", "sofa",
                 "credit", "increase", "squirrel", "volleyball", "pipe", "memory",
                 "motion", "activity", "club", "parcel", "pocket", "home", "grandmother",
                 "hammer", "copper", "laugh", "flame", "head", "tray", "back", "committee",
                 "friend", "boundary", "insurance", "tank", "key", "cemetery", "voice",
-                "invention", "death", "thing");
+                "invention", "fire", "thing");
 
         for (int i = 0; i < 1000000; i++) {
             // Generate a unique filename for each image
@@ -188,7 +188,7 @@ public class Image_Repo {
             try {
                 Date month = string_to_date("01-2022");
 
-                // randomly select 50 tags to add to each image
+                // randomly select 10 tags to add to each image
                 Random select = new Random();
                 ArrayList<String> tags_selected = new ArrayList<>();
                 for (int j = 0; j < 10; j++) {
